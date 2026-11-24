@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="assets/css/diseño.css">
+</head>
+<body class="body-registro">
+
+    <div class="contenedor-superposicion">
+
+        <!-- Imagen de fondo (televisión) -->
+        <div class="gif-placeholder">
+            <img src="assets/images/Tv.png" alt="Fondo decorativo" class="imagen-fondo">
+        </div>
+
+        <div class="gif-fondo-tv" id="gifFondoTv" aria-hidden="true">
+            <img src="assets/images/Estatica.gif" alt="" class="gif-fondo-imagen">
+        </div>
+
+        <!-- GIF de entrada dentro de la pantalla de la TV (tapa el formulario y no sobresale) -->
+        <div class="gif-entrada-tv" id="gifEntradaTv" aria-hidden="true">
+            <img src="assets/images/estatica_inicio.gif" alt="" class="gif-entrada-imagen">
+        </div>
+
+        <!-- Formulario encima de la imagen -->
+        <div class="contenedor-principal formulario-encima">
+            <div class="contenedor-formulario-datos">
+                <div class="contenedor-inicio-registro">
+
+                    <!-- Conmutador con enlaces directos -->
+                    <div class="contenedor-toggle">
+                        <a href="index.html" class="btn-toggle">Iniciar Sesión</a>
+                        <a href="sign_up.html" class="btn-toggle-activo">Registrar</a>
+                    </div>
+
+                    <!-- Formulario de Registro -->
+                    <form class="formulario-datos" id="formRegistro">
+                        <div class="formulario-datos-span">
+                            <p class="formulario-texto-instruccion">Crea una cuenta nueva</p>
+                        </div>
+
+                        <div class="formulario-datos-inputs">
+                            <div class="formulario-datos-input-grupo">
+                                <input type="text" name="nombre" placeholder="Nombre completo" class="form-input">
+                                <small class="error error-registro-nombre" id="error-registro-nombre"></small>
+                            </div>
+
+                            <div class="formulario-datos-input-grupo">
+                                <input type="email" name="correo" placeholder="Correo electrónico" class="form-input">
+                                <small class="error error-registro-correo" id="error-registro-correo"></small>
+                            </div>
+
+                            <div class="formulario-datos-input-grupo">
+                                <input type="password" name="password" placeholder="Contraseña" class="form-input">
+                                <small class="error error-registro-password" id="error-registro-password"></small>
+                            </div>
+
+                            <div class="formulario-datos-boton-grupo">
+                                <button type="submit" id="btnEnviarRegistro" class="btn-accion primary">Registrarse</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="formulario-datos-mensaje-global" id="mensajeGlobal"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="assets/js/formulario.js"></script>
+</body>
+</html>

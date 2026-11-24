@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario Físico</title>
+    <link rel="stylesheet" href="assets/css/diseño.css">
+</head>
+<body class="body-fisico">
+
+    <!-- BARRA LATERAL IZQUIERDA -->
+    <aside class="sidebar">
+        <h2 class="sidebar-titulo">Panel</h2>
+
+        <!-- SECCIÓN DE CUENTA / PERFIL -->
+        <div class="sidebar-cuenta">
+            <button type="button" id="btnAbrirPerfil" class="btn-perfil">
+                <img id="avatarMini" src="https://via.placeholder.com/150" alt="Avatar" width="45" height="45" class="perfil-avatar-mini">
+                <span id="nombreUsuarioTop" class="perfil-nombre-top">Cargando...</span>
+                <span class="perfil-subtexto">Ver cuenta</span>
+            </button>
+        </div>
+
+        <!-- NAVEGACIÓN DE INVENTARIOS Y CIERRE DE SESIÓN -->
+        <nav class="sidebar-nav">
+            <a href="fisico.html" id="linkFisico" class="nav-link active">Inventario Físico</a>
+            <a href="digital.html" id="linkDigital" class="nav-link">Inventario Digital</a>
+            <a href="index.html" class="nav-link logout">Cerrar Sesión</a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        <div class="container">
+            <h2 class="page-title">Inventario Físico</h2>
+
+            <!-- Botón para abrir el Pop-Up de Agregar -->
+            <div id="contenedorBtnAgregar" class="contenedor-btn-agregar">
+                <button type="button" id="btnAbrirModalAgregar">+ Agregar Registro Físico</button>
+            </div>
+
+            <!-- Tabla de Registros -->
+            <table class="tabla-inventario">
+                <thead>
+                    <tr class="tabla-header-row">
+                        <th class="th-item">Imagen</th>
+                        <th class="th-item">Nombre</th>
+                        <th class="th-item">Género</th>
+                        <th class="th-item">Idioma</th>
+                        <th class="th-item">Clasificación</th>
+                        <th class="th-item">Formato</th>
+                        <th class="th-item">Estado</th>
+                        <th class="th-item">Stock</th>
+                        <th class="th-item">Precio</th>
+                        <th colspan="2" class="th-item">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaUsuarios" class="tabla-body">
+                    <!-- Los datos se cargan dinámicamente con Fisico.js -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- MODAL POP-UP PERFIL -->
+    <dialog id="modalPerfil" class="modal modal-perfil">
+        <h3 class="modal-title">Mi Perfil</h3>
+        <div class="modal-perfil-img-container">
+            <img id="avatarModal" src="https://via.placeholder.com/150" alt="Foto de perfil" width="100" height="100" class="perfil-avatar-modal"><br>
+            <label for="inputCambiarFoto" class="label-cambiar-foto">Cambiar Foto</label>
+            <input type="file" id="inputCambiarFoto" accept="image/*" class="input-file-foto" style="display: none;">
+        </div>
+        <div class="modal-perfil-info">
+            <label class="form-label">Nombre:</label>
+            <input type="text" id="inputEditarNombre" class="form-input">
+            
+            <p class="perfil-info-item"><strong>Correo:</strong> <span id="perfilCorreo"></span></p>
+            <p class="perfil-info-item"><strong>Tipo de Usuario:</strong> <span id="perfilRol"></span></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="btnCerrarPerfil" class="btn-accion secondary">Cerrar</button>
+            <button type="button" id="btnGuardarPerfil" class="btn-accion primary">Guardar Cambios</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL POP-UP PARA CREAR / AGREGAR REGISTRO FÍSICO -->
+    <dialog id="modalAgregar" class="modal modal-agregar">
+        <h3 class="modal-title">Agregar Nuevo Registro Físico</h3>
+        <form id="formCrear" enctype="multipart/form-data" class="form-modal">
+            <input type="hidden" name="accion" value="crear">
+            
+            <div class="form-grupo">
+                <label class="form-label">Portada (Imagen desde la computadora):</label>
+                <input type="file" name="imagen" accept="image/*" class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Nombre:</label>
+                <input type="text" name="nombre" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Género:</label>
+                <input type="text" name="genero" class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Idioma:</label>
+                <input type="text" name="idioma" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Clasificación de Edad (ESRB):</label>
+                <select name="clasificacion_edad" required class="form-input">
+                    <option value="" disabled selected>Selecciona una clasificación ESRB</option>
+                    <option value="EC">EC (Early Childhood / Infantil)</option>
+                    <option value="E">E (Everyone / Todos)</option>
+                    <option value="E10+">E10+ (Everyone 10+ / Mayores de 10 años)</option>
+                    <option value="T">T (Teen / Adolescentes)</option>
+                    <option value="M">M (Mature 17+ / Maduro)</option>
+                    <option value="AO">AO (Adults Only 18+ / Solo adultos)</option>
+                    <option value="RP">RP (Rating Pending / Clasificación pendiente)</option>
+                </select>
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Tipo de Formato:</label>
+                <input type="text" name="tipo_formato" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Estado:</label>
+                <input type="text" name="estado" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Stock:</label>
+                <input type="number" name="stock" min="0" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Precio:</label>
+                <input type="number" step="0.01" name="precio" required class="form-input">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btnCerrarModalAgregar" class="btn-accion secondary">Cancelar</button>
+                <button type="submit" class="btn-accion primary">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- MODAL EDITAR -->
+    <dialog id="modalEditar" class="modal modal-editar">
+        <h3 class="modal-title">Editar Registro Físico</h3>
+        <form id="formEditar" enctype="multipart/form-data" class="form-modal">
+            <input type="hidden" name="accion" value="actualizar">
+            <input type="hidden" name="id" id="editUsuarioId">
+            
+            <div class="form-grupo">
+                <label class="form-label">Nueva Portada (Opcional, desde la computadora):</label>
+                <input type="file" name="imagen" accept="image/*" class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Nombre:</label>
+                <input type="text" name="nombre" id="editNombre" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Género:</label>
+                <input type="text" name="genero" id="editGenero" class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Idioma:</label>
+                <input type="text" name="idioma" id="editIdioma" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Clasificación (ESRB):</label>
+                <select name="clasificacion_edad" id="editClasificacion" required class="form-input">
+                    <option value="" disabled>Selecciona una clasificación ESRB</option>
+                    <option value="EC">EC (Early Childhood / Infantil)</option>
+                    <option value="E">E (Everyone / Todos)</option>
+                    <option value="E10+">E10+ (Everyone 10+ / Mayores de 10 años)</option>
+                    <option value="T">T (Teen / Adolescentes)</option>
+                    <option value="M">M (Mature 17+ / Maduro)</option>
+                    <option value="AO">AO (Adults Only 18+ / Solo adultos)</option>
+                    <option value="RP">RP (Rating Pending / Clasificación pendiente)</option>
+                </select>
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Tipo de Formato:</label>
+                <input type="text" name="tipo_formato" id="editFormato" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Estado:</label>
+                <input type="text" name="estado" id="editEstado" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Stock:</label>
+                <input type="number" name="stock" id="editStock" required class="form-input">
+            </div>
+            <div class="form-grupo">
+                <label class="form-label">Precio:</label>
+                <input type="number" step="0.01" name="precio" id="editPrecio" required class="form-input">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btnCerrarEditar" class="btn-accion secondary">Cancelar</button>
+                <button type="submit" class="btn-accion primary">Actualizar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- MODAL ZOOM IMAGEN -->
+    <dialog id="modalImagen" class="modal modal-zoom">
+        <div id="contenedorImagenZoom" class="zoom-container"></div>
+        <div class="modal-footer">
+            <button type="button" id="btnCerrarImg" class="btn-accion primary">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL ELIMINAR -->
+    <dialog id="modalEliminar" class="modal modal-eliminar">
+        <h3 class="modal-title">¿Estás seguro de eliminar este registro?</h3>
+        <div class="modal-footer">
+            <button type="button" id="btnCancelarEliminar" class="btn-accion secondary">Cancelar</button>
+            <button type="button" id="btnConfirmarEliminar" class="btn-accion danger">Eliminar</button>
+        </div>
+    </dialog>
+
+    <script src="assets/js/Fisico.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/diseño.css">
+    <title>Iniciar Sesión</title>
+</head>
+<body class="body-login">
+
+    <div class="contenedor-superposicion">
+
+        <!-- Imagen de fondo (televisión) -->
+        <div class="gif-placeholder">
+            <img src="assets/images/Tv.png" alt="Televisión retro" class="imagen-fondo">
+        </div>
+
+        <!-- GIF diferente permanente con opacidad dentro de la pantalla de la TV -->
+        <div class="gif-fondo-tv" id="gifFondoTv" aria-hidden="true">
+            <img src="assets/images/Estatica.gif" alt="" class="gif-fondo-imagen">
+        </div>
+
+        <!-- GIF de entrada dentro de la pantalla de la TV (se oculta al terminar) -->
+        <div class="gif-entrada-tv" id="gifEntradaTv" aria-hidden="true">
+            <img src="assets/images/estatica_inicio.gif" alt="" class="gif-entrada-imagen">
+        </div>
+
+        <!-- Formulario de Inicio de Sesión dentro de la pantalla de la TV -->
+        <div class="contenedor__datos contenedor-principal formulario-encima">
+            <div class="contenedor__formulario--datos contenedor-formulario-datos">
+                <div class="contenedor_inicio-registro contenedor-inicio-registro">
+
+                    <!-- Conmutador con enlaces directos -->
+                    <div class="contenedor-toggle">
+                        <a href="index.html" class="btn-toggle-activo">Iniciar Sesión</a>
+                        <a href="sign_up.html" class="btn-toggle">Registrar</a>
+                    </div>
+
+                    <!-- Formulario de Login -->
+                    <form class="formulario_datos formulario-datos" id="formLogin">
+                        <div class="formulario-datos__span formulario-datos-span">
+                            <p class="formulario-texto-instruccion">Ingresa tus datos para acceder</p>
+                        </div>
+
+                        <div class="formulario-datos__inputs formulario-datos-inputs">
+                            <div class="formulario-datos__input formulario-datos-input-grupo">
+                                <input type="email" name="correo" placeholder="Correo electrónico" class="form-input">
+                                <small class="error" id="error-login-correo"></small>
+                            </div>
+
+                            <div class="formulario-datos__input formulario-datos-input-grupo">
+                                <input type="password" name="password" placeholder="Contraseña" class="form-input">
+                                <small class="error" id="error-login-password"></small>
+                            </div>
+
+                            <div class="formulario-datos__boton formulario-datos-boton-grupo">
+                                <button type="submit" id="btnEnviarLogin" class="btn-accion primary">Iniciar Sesión</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="formulario-datos__mensaje-global formulario-datos-mensaje-global" id="mensajeGlobal"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal de Selección de Inventario (activado por formulario.js tras login exitoso) -->
+    <dialog id="modalSeleccionInventario" class="modal-seleccion-inventario">
+        <h2 class="modal-title">Selecciona un Inventario</h2>
+        <p class="modal-texto">Elige a qué área deseas ingresar:</p>
+        <div class="seleccion-inventario-botones">
+            <a href="digital.html" class="btn-accion primary">Inventario Digital</a>
+            <a href="fisico.html" class="btn-accion primary">Inventario Físico</a>
+        </div>
+    </dialog>
+
+    <script type="module" src="assets/js/formulario.js"></script>
+</body>
+</html>

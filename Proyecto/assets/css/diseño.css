@@ -1,0 +1,918 @@
+/* --- ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- FONDOS DE VISTAS (LOGIN / REGISTRO) --- */
+body.body-login,
+body.body-registro {
+    background-color: #fff300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- FONDOS DE INVENTARIO DIGITAL Y FÍSICO --- */
+body.body-digital,
+body.body-fisico {
+    min-height: 100vh;
+    background-color: #0b0b0b;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Cambia la ruta de cada imagen según corresponda */
+body.body-digital {
+    background-image:
+                      url("../images/Fondo.jpg");
+}
+
+body.body-fisico {
+    background-image: 
+                      url("../images/Fondo.jpg");
+}
+
+/* --- QUITAR CÍRCULOS --- */
+.formulario-datos-redes-sociales,
+.formulario-datos-icono {
+    display: none;
+}
+
+/* --- TELEVISIÓN AGRANDADA + GIF DE ENTRADA + FORMULARIO --- */
+.contenedor-superposicion {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gif-placeholder {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.imagen-fondo {
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 0;
+}
+
+.gif-fondo-tv {
+    position: absolute;
+    top: 54.5%;
+    left: 44.5%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    height: 33.5%;
+    overflow: hidden;
+    border-radius: 16px;
+    z-index: 15;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.gif-fondo-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+.gif-entrada-tv {
+    position: absolute;
+    top: 54.5%;
+    left: 44.5%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    height: 33.5%;
+    overflow: hidden;
+    border-radius: 16px;
+    z-index: 25;
+    pointer-events: none;
+    animation: ocultarGifEntrada 1.5s ease-out forwards;
+}
+
+.gif-entrada-tv.oculto {
+    display: none;
+}
+
+.gif-entrada-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+@keyframes ocultarGifEntrada {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    85% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.contenedor-principal,
+.contenedor-principal.formulario-encima {
+    position: absolute;
+    top: 56.5%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    width: 42%;
+    max-width: 280px;
+    padding: 4px;
+    z-index: 10;
+}
+
+.contenedor-formulario-datos {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    border-radius: 0;
+    padding: 10px 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.contenedor-inicio-registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+/* --- CONMUTADOR (TOGGLE) --- */
+.contenedor-toggle {
+    display: flex;
+    margin-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #1a1a1a;
+    border-radius: 0;
+    padding: 2px;
+    width: 100%;
+}
+
+.btn-toggle-activo,
+.btn-toggle {
+    flex: 1;
+    text-align: center;
+    padding: 5px 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0;
+    font-size: 0.72rem;
+    transition: all 0.2s;
+}
+
+.btn-toggle-activo {
+    background-color: #fff300;
+    color: #0b0b0b;
+}
+
+.btn-toggle {
+    color: #cccccc;
+}
+
+.btn-toggle:hover {
+    color: #fff300;
+}
+
+/* --- FORMULARIOS E INPUTS --- */
+.formulario-datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.formulario-datos-span {
+    width: 100%;
+    margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.formulario-texto-instruccion {
+    color: #cccccc;
+    font-size: 0.72rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formulario-datos-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.formulario-datos-input-grupo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    padding: 6px 8px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #333333;
+    border-radius: 0;
+    font-size: 0.75rem;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+    border-color: #fff300;
+    box-shadow: 0 0 0 2px rgba(255, 243, 0, 0.25);
+}
+
+.form-input[type="file"] {
+    padding: 6px;
+    background-color: #161616;
+    color: #ffffff;
+    border: 1px solid #fff300;
+    cursor: pointer;
+}
+
+.form-input[type="file"]::file-selector-button {
+    background-color: #fff300;
+    color: #0b0b0b;
+    border: none;
+    border-radius: 0;
+    padding: 5px 10px;
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.form-input[type="file"]::file-selector-button:hover {
+    background-color: #e6d800;
+}
+
+.formulario-datos-boton-grupo {
+    margin-top: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- BOTONES GLOBALES --- */
+.btn-accion {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 0.76rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-accion.primary {
+    background-color: #fff300;
+    color: #0b0b0b;
+}
+
+.btn-accion.primary:hover {
+    background-color: #e6d800;
+}
+
+.btn-accion.secondary {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+.btn-accion.secondary:hover {
+    background-color: #3a3a3a;
+}
+
+.btn-accion.danger {
+    background-color: #ff4d4d;
+    color: #ffffff;
+}
+
+.btn-accion.danger:hover {
+    background-color: #e03636;
+}
+
+.contenedor-principal .btn-accion.primary {
+    width: 100%;
+    padding: 6px 10px;
+}
+
+/* --- MENSAJES Y ERRORES --- */
+.formulario-datos-mensaje-global {
+    margin-top: 6px;
+    padding: 5px;
+    border-radius: 0;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.error {
+    color: #ff4d4d;
+    font-size: 0.68rem;
+    margin-top: 2px;
+    display: block;
+}
+
+/* --- SIDEBAR (INVENTARIOS, CUENTA Y CERRAR SESIÓN) --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100vh;
+    background-color: #0b0b0b;
+    color: #ffffff;
+    border-right: 2px solid #fff300;
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 18px;
+    z-index: 50;
+    box-shadow: 6px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-titulo {
+    color: #fff300;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.sidebar-cuenta {
+    width: 100%;
+}
+
+.btn-perfil {
+    width: 100%;
+    background-color: #161616;
+    color: #ffffff;
+    border: 1px solid #fff300;
+    border-radius: 0;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-perfil:hover {
+    background-color: #222200;
+}
+
+.perfil-avatar-mini {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 0;
+    border: 2px solid #fff300;
+}
+
+.perfil-nombre-top {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #ffffff;
+    word-break: break-word;
+}
+
+.perfil-subtexto {
+    font-size: 0.7rem;
+    color: #fff300;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.nav-link {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #161616;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #2a2a2a;
+    border-radius: 0;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.nav-link:hover {
+    border-color: #fff300;
+    color: #fff300;
+}
+
+.nav-link.active {
+    background-color: #fff300;
+    color: #0b0b0b;
+    border-color: #fff300;
+}
+
+.nav-link.logout {
+    margin-top: auto;
+    background-color: #1a1a1a;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+.nav-link.logout:hover {
+    background-color: #ff4d4d;
+    color: #ffffff;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+body.body-digital .main-content,
+body.body-fisico .main-content {
+    margin-left: 230px;
+    width: calc(100% - 230px);
+    min-height: 100vh;
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 100%;
+}
+
+.page-title {
+    color: #fff300;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+}
+
+.contenedor-btn-agregar {
+    margin-bottom: 18px;
+}
+
+#btnAbrirModalAgregar {
+    background-color: #fff300;
+    color: #0b0b0b;
+    border: 2px solid #0b0b0b;
+    border-radius: 0;
+    padding: 10px 18px;
+    font-weight: bold;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#btnAbrirModalAgregar:hover {
+    background-color: #e6d800;
+}
+
+/* --- TABLA DE INVENTARIO CON ESQUINAS REDONDEADAS --- */
+.tabla-inventario {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    background-color: #0b0b0b;
+    color: #ffffff;
+    border: 2px solid #fff300;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    text-align: center;
+}
+
+.tabla-header-row,
+.tabla-inventario thead tr {
+    background-color: #fff300;
+    color: #0b0b0b;
+}
+
+.th-item,
+.tabla-inventario th {
+    background-color: #fff300;
+    color: #0b0b0b;
+    padding: 10px 8px;
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-right: 1px solid #0b0b0b;
+    border-bottom: 2px solid #0b0b0b;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.th-item:last-child,
+.tabla-inventario th:last-child {
+    border-right: none;
+}
+
+.tabla-inventario thead tr th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.tabla-inventario thead tr th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.tabla-inventario tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.tabla-inventario tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.tabla-body td,
+.tabla-inventario tbody td {
+    padding: 9px 8px;
+    font-size: 0.78rem;
+    color: #ffffff;
+    border-right: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tabla-body td:last-child,
+.tabla-inventario tbody td:last-child {
+    border-right: none;
+}
+
+.tabla-inventario tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-body tr:nth-child(even) {
+    background-color: #121212;
+}
+
+.tabla-body tr:hover {
+    background-color: #1f1f00;
+}
+
+.tabla-body img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 0 !important;
+    border: 1px solid #fff300;
+}
+
+.tabla-body .btn-editar,
+.tabla-body .btn-eliminar,
+.tabla-body .btn-links,
+.tabla-body .btn-comprar {
+    display: inline-block;
+    padding: 5px 10px !important;
+    font-size: 0.72rem !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    border-radius: 0 !important;
+    cursor: pointer;
+    border: none !important;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tabla-body .btn-editar,
+.tabla-body .btn-links,
+.tabla-body .btn-comprar {
+    background-color: #fff300 !important;
+    color: #0b0b0b !important;
+}
+
+.tabla-body .btn-editar:hover,
+.tabla-body .btn-links:hover,
+.tabla-body .btn-comprar:hover {
+    background-color: #e6d800 !important;
+    color: #0b0b0b !important;
+}
+
+.tabla-body .btn-eliminar {
+    background-color: #ff4d4d !important;
+    color: #ffffff !important;
+}
+
+.tabla-body .btn-eliminar:hover {
+    background-color: #e03636 !important;
+}
+
+/* --- TODOS LOS MODALES (<dialog>) UNIFICADOS Y CENTRADOS --- */
+dialog.modal-seleccion-inventario:not([open]),
+dialog.modal:not([open]) {
+    display: none;
+}
+
+dialog.modal-seleccion-inventario[open],
+dialog.modal[open] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background-color: #0b0b0b;
+    color: #ffffff;
+    border: 2px solid #fff300;
+    border-radius: 0;
+    padding: 20px;
+    max-width: 460px;
+    width: 92%;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+dialog.modal-seleccion-inventario[open] {
+    max-width: 260px;
+    padding: 18px;
+}
+
+dialog.modal-eliminar[open] {
+    max-width: 360px;
+}
+
+dialog.modal-zoom[open] {
+    max-width: 520px;
+}
+
+dialog.modal-seleccion-inventario::backdrop,
+dialog.modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.modal-title {
+    color: #fff300;
+    font-size: 1.08rem;
+    margin-bottom: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+.modal-texto {
+    color: #cccccc;
+    margin-bottom: 12px;
+    font-size: 0.75rem;
+}
+
+.seleccion-inventario-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+/* Formularios dentro de modales */
+.form-modal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-grupo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.form-label {
+    color: #fff300;
+    font-size: 0.76rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.grupo-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 6px;
+    background-color: #161616;
+    border: 1px solid #333333;
+    width: 100%;
+}
+
+.checkbox-label {
+    color: #ffffff;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.contenedor-dinamico-links {
+    width: 100%;
+    background-color: #161616;
+    border: 1px solid #333333;
+    padding: 10px;
+    text-align: center;
+}
+
+.contenedor-dinamico-links label {
+    color: #ffffff;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.contenedor-dinamico-links input[type="url"],
+.contenedor-dinamico-links input[type="number"] {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    border: 1px solid #fff300;
+    padding: 5px;
+    text-align: center;
+}
+
+.texto-ayuda {
+    color: #aaaaaa;
+    font-size: 0.75rem;
+}
+
+/* Perfil dentro del modal */
+.modal-perfil-img-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.perfil-avatar-modal {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #fff300;
+    border-radius: 0;
+    margin-bottom: 8px;
+}
+
+.label-cambiar-foto {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fff300;
+    color: #0b0b0b;
+    font-size: 0.74rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-perfil-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.perfil-info-item {
+    font-size: 0.8rem;
+    color: #cccccc;
+}
+
+.perfil-info-item strong {
+    color: #fff300;
+}
+
+/* Contenido de Links dentro de #modalLinks */
+.contenido-links {
+    width: 100%;
+    text-align: center;
+}
+
+.contenido-links h3 {
+    color: #fff300;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+}
+
+.contenido-links hr {
+    border: none;
+    border-top: 1px solid #333333;
+    margin: 10px 0;
+}
+
+.contenido-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.contenido-links li {
+    margin: 8px 0 !important;
+    padding: 8px 10px;
+    background-color: #161616;
+    border: 1px solid #333333;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+}
+
+.contenido-links a {
+    color: #fff300 !important;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.contenido-links a:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+/* Zoom de imagen */
+.zoom-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zoom-container img {
+    border: 2px solid #fff300;
+    border-radius: 0 !important;
+}
+
+/* Pie de todos los modales */
+.modal-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.modal-footer .btn-accion {
+    flex: 1;
+}
